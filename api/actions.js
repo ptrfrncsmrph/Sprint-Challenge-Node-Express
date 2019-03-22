@@ -80,16 +80,24 @@ router.delete("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   const { id } = req.params
-  const { text } = req.body
+  const { project_id, description, notes, completed } = req.body
+  if ([project_id, description, notes].every(field => field == null)) {
+    res.status(400).json({
+      message:
+        "Please provide any of the following to update the action: project ID, description or notes."
+    })
+  }
   try {
-    const action = await Action.getById(id)
+    const action = await Action.get(id)
     action == null
       ? res.status(404).json({
           message: `There is no action with id ${id}.`
         })
-      : Action.update(id, { text }).then(() => {
-          res.status(200).json({ text, id })
-        })
+      : Action.update(id, { project_id, description, notes, completed }).then(
+          action => {
+            res.status(200).json(action)
+          }
+        )
   } catch (error) {
     console.log(JSON.stringify(error, null, 2))
     res.status(500).json({

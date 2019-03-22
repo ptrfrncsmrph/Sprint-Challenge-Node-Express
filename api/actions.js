@@ -60,7 +60,7 @@ router.get("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params
   try {
-    const action = await Action.getById(id)
+    const action = await Action.get(id)
     action == null
       ? res.status(404).json({
           message: `There is no action with id ${id}.`

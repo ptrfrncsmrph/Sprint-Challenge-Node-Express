@@ -1,6 +1,7 @@
 const express = require("express")
 
 const Project = require("../data/helpers/projectModel")
+const Action = require("../data/helpers/actionModel")
 
 const router = express.Router()
 
@@ -44,6 +45,23 @@ router.get("/:id", async (req, res) => {
           message: `There is no project with id ${id}.`
         })
       : res.status(200).json(project)
+  } catch (error) {
+    console.log(JSON.stringify(error, null, 2))
+    res.status(500).json({
+      message: "Error finding the project."
+    })
+  }
+})
+
+router.get("/:id/actions", async (req, res) => {
+  const { id } = req.params
+  try {
+    const project = await Project.get(id)
+    project == null
+      ? res.status(404).json({
+          message: `There is no project with id ${id}.`
+        })
+      : res.status(200).json(project.actions)
   } catch (error) {
     console.log(JSON.stringify(error, null, 2))
     res.status(500).json({

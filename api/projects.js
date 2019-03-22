@@ -75,11 +75,11 @@ router.delete("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   const { id } = req.params
-  const { project_id, description, notes, completed } = req.body
-  if ([project_id, description, notes].every(field => field == null)) {
+  const { name, description, completed } = req.body
+  if ([name, description, completed].every(field => field == null)) {
     res.status(400).json({
       message:
-        "Please provide any of the following to update the project: project ID, description or notes."
+        "Please provide any of the following to update the project: name, description, or completed."
     })
   } else {
     try {
@@ -89,9 +89,8 @@ router.put("/:id", async (req, res) => {
             message: `There is no project with id ${id}.`
           })
         : Project.update(id, {
-            project_id,
+            name,
             description,
-            notes,
             completed
           }).then(project => {
             res.status(200).json(project)

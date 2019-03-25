@@ -1,3 +1,7 @@
-// play this: https://www.youtube.com/watch?v=d-diB65scQU
+const server = require("./server")
 
-// code away!
+const PORT = 9000
+
+server.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`)
+})

@@ -24,31 +24,41 @@ In this challenge, create a web API around the following resources: `Projects` a
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Mention two parts of Express that you learned about this week.
+- [x] Mention two parts of Express that you learned about this week.
 
-- [ ] Describe Middleware?
+We learned about routing (setting up RESTful endpoints at different routes of an API) and middleware.
 
-- [ ] Describe a Resource?
+- [x] Describe Middleware?
 
-- [ ] What can the API return to help clients know if a request was successful?
+A middleware is a function that is added as a layer to a web server that encapsulates some logic you want to execute, usually by modifying the request in some way or could be simply for logging. These middleware can be added to the Express server with the `server.use` method.
 
-- [ ] How can we partition our application into sub-applications?
+- [x] Describe a Resource?
+
+Everything in your app that is a noun can be thought of as a resource. In the example today, the "resources" of the app that we want to make available through an API are the `projects` and `actions`. Each resource is typically allocated its own endpoint in a RESTful API.
+
+- [x] What can the API return to help clients know if a request was successful?
+
+The API should return a header status code in the 200 range to indicate that the request was successful. It is also good to attach some meaningful data as a response, for instance a modified row of the database (in JSON/XML) to indicate that it was updated successfully and as expected.
+
+- [x] How can we partition our application into sub-applications?
+
+By splitting the app into individual endpoints for each resource, it's possible to only interact with the part of the app that handles that resource, so becomes a sub-application in that sense.
 
 ## Project Setup
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your _Project Manager_ as collaborator on Github.
-- [ ] Clone your forked version of the Repository.
-- [ ] Create a new Branch on the clone: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [x] Create a forked copy of this project.
+- [x] Add your _Project Manager_ as collaborator on Github.
+- [x] Clone your forked version of the Repository.
+- [x] Create a new Branch on the clone: git checkout -b `<firstName-lastName>`.
+- [x] Implement the project on this Branch, committing changes regularly.
+- [x] Push commits: git push origin `<firstName-lastName>`.
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master on your fork. **Please don't merge your own pull request.**
-- [ ] Add your _Project Manager_ as a Reviewer on the Pull-request
+- [x] Submit a Pull-Request to merge <firstName-lastName> Branch into master on your fork. **Please don't merge your own pull request.**
+- [x] Add your _Project Manager_ as a Reviewer on the Pull-request
 - [ ] Your _Project Manager_ will count the challenge as done by merging the branch into _master_.
 
 ## Database Persistence Helpers
@@ -68,13 +78,13 @@ The `projectModel.js` helper includes an extra method called `getProjectActions(
 
 ## Minimum Viable Product
 
-- [ ] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
-- [ ] Configure an _npm script_ named _"start"_ that will execute your code using _node_.
+- [x] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
+- [x] Configure an _npm script_ named _"start"_ that will execute your code using _node_.
 
 Design and build the necessary endpoints to:
 
-- [ ] Perform CRUD operations on _projects_ and _actions_.
-- [ ] Retrieve the list of actions for a project.
+- [x] Perform CRUD operations on _projects_ and _actions_.
+- [x] Retrieve the list of actions for a project.
 
 ### Database Schemas
 
